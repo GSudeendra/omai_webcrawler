@@ -4,9 +4,12 @@ import requests
 from bs4 import BeautifulSoup
 
 from src.embeddings import Embedder
+from llama_streaming import router as llama_router
+
 
 app = FastAPI()
 embedder = Embedder()
+app.include_router(llama_router)
 
 class CrawlRequest(BaseModel):
     url: str
